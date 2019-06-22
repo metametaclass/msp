@@ -237,7 +237,7 @@ public:
      */
     bool unpack(bool& val) const {
         if(unpacking_remaining() < 1) return false;
-        val = (*this)[offset++];
+        val = (*this)[offset++]!=0;
         return true;
     }
 

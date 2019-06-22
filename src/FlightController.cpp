@@ -233,7 +233,7 @@ bool FlightController::isStatusActive(const std::string &status_name) {
     client_.sendMessage(status);
 
     // check if ARM box id is amongst active box IDs
-    return status.box_mode_flags.count(box_name_ids_.at(status_name));
+    return status.box_mode_flags.count(box_name_ids_.at(status_name))!=0;
 }
 
 bool FlightController::setRc(const uint16_t roll, const uint16_t pitch,

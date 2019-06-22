@@ -1537,7 +1537,7 @@ struct CfSerialConfig : public Message {
             rc &= data.unpack(tmp.peripheralBaudrateIndx);
             if(rc) configs.push_back(tmp);
         } while(rc);
-        return configs.size();
+        return configs.size()!=0;
     }
 };
 
@@ -2619,7 +2619,7 @@ struct Ident : public Message {
         return true;
     }
 
-    bool has(const Capability& cap) const { return capabilities.count(cap); }
+    bool has(const Capability& cap) const { return capabilities.count(cap)!=0; }
 
     bool hasBind() const { return has(Capability::BIND); }
 
@@ -2774,23 +2774,27 @@ struct Status : public StatusBase, public Message {
         return rc;
     }
 
-    bool hasAccelerometer() const {
-        return sensors.count(Sensor::Accelerometer);
+    bool hasSensor(Sensor sensor) const {
+        return sensors.count(sensor)!=0;
     }
 
-    bool hasBarometer() const { return sensors.count(Sensor::Barometer); }
+    bool hasAccelerometer() const {
+        return hasSensor(Sensor::Accelerometer);
+    }
 
-    bool hasMagnetometer() const { return sensors.count(Sensor::Magnetometer); }
+    bool hasBarometer() const { return hasSensor(Sensor::Barometer); }
 
-    bool hasGPS() const { return sensors.count(Sensor::GPS); }
+    bool hasMagnetometer() const { return hasSensor(Sensor::Magnetometer); }
 
-    bool hasSonar() const { return sensors.count(Sensor::Sonar); }
+    bool hasGPS() const { return hasSensor(Sensor::GPS); }
 
-    bool hasOpticalFlow() const { return sensors.count(Sensor::OpticalFlow); }
+    bool hasSonar() const { return hasSensor(Sensor::Sonar); }
 
-    bool hasPitot() const { return sensors.count(Sensor::Pitot); }
+    bool hasOpticalFlow() const { return hasSensor(Sensor::OpticalFlow); }
 
-    bool isHealthy() const { return sensors.count(Sensor::GeneralHealth); }
+    bool hasPitot() const { return hasSensor(Sensor::Pitot); }
+
+    bool isHealthy() const { return hasSensor(Sensor::GeneralHealth); }
 
     virtual std::ostream& print(std::ostream& s) const override {
         s << "#Status:" << std::endl;
@@ -5160,23 +5164,27 @@ struct InavStatus : public StatusBase, public Message {
         return rc;
     }
 
+	bool hasSensor(Sensor sensor) const {
+		return sensors.count(sensor)!=0;
+	}
+
     bool hasAccelerometer() const {
-        return sensors.count(Sensor::Accelerometer);
+        return hasSensor(Sensor::Accelerometer);
     }
 
-    bool hasBarometer() const { return sensors.count(Sensor::Barometer); }
+    bool hasBarometer() const { return hasSensor(Sensor::Barometer); }
 
-    bool hasMagnetometer() const { return sensors.count(Sensor::Magnetometer); }
+    bool hasMagnetometer() const { return hasSensor(Sensor::Magnetometer); }
 
-    bool hasGPS() const { return sensors.count(Sensor::GPS); }
+    bool hasGPS() const { return hasSensor(Sensor::GPS); }
 
-    bool hasSonar() const { return sensors.count(Sensor::Sonar); }
+    bool hasSonar() const { return hasSensor(Sensor::Sonar); }
 
-    bool hasOpticalFlow() const { return sensors.count(Sensor::OpticalFlow); }
+    bool hasOpticalFlow() const { return hasSensor(Sensor::OpticalFlow); }
 
-    bool hasPitot() const { return sensors.count(Sensor::Pitot); }
+    bool hasPitot() const { return hasSensor(Sensor::Pitot); }
 
-    bool isHealthy() const { return sensors.count(Sensor::GeneralHealth); }
+    bool isHealthy() const { return hasSensor(Sensor::GeneralHealth); }
 
     virtual std::ostream& print(std::ostream& s) const override {
         s << "#Status:" << std::endl;

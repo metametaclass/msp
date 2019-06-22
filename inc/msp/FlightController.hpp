@@ -231,7 +231,7 @@ public:
      * @return True if the sensor is present
      */
     bool hasCapability(const msp::msg::Capability &cap) const {
-        return capabilities_.count(cap);
+        return capabilities_.count(cap)!=0;
     }
 
     /**
@@ -260,7 +260,7 @@ public:
      * @return True if the sensor is present
      */
     bool hasSensor(const msp::msg::Sensor &sensor) const {
-        return sensors_.count(sensor);
+        return sensors_.count(sensor)!=0;
     }
 
     /**
