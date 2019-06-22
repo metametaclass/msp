@@ -3260,34 +3260,34 @@ struct PidSettings {
         s << "#PID:" << std::endl;
         s << " Name      P     | I     | D     |" << std::endl;
         s << " ----------------|-------|-------|" << std::endl;
-        s << " Roll:      " << entry[PID_ROLL]().P << "\t| "
-          << entry[PID_ROLL]().I << "\t| " << entry[PID_ROLL]().D << std::endl;
-        s << " Pitch:     " << entry[PID_PITCH]().P << "\t| "
-          << entry[PID_PITCH]().I << "\t| " << entry[PID_PITCH]().D
+        s << " Roll:      " << +entry[PID_ROLL]().P << "\t| "
+          << +entry[PID_ROLL]().I << "\t| " << +entry[PID_ROLL]().D << std::endl;
+        s << " Pitch:     " << +entry[PID_PITCH]().P << "\t| "
+          << +entry[PID_PITCH]().I << "\t| " << +entry[PID_PITCH]().D
           << std::endl;
-        s << " Yaw:       " << entry[PID_YAW]().P << "\t| "
-          << entry[PID_YAW]().I << "\t| " << entry[PID_YAW]().D << std::endl;
-        s << " Altitude:  " << entry[PID_POS_Z]().P << "\t| "
-          << entry[PID_POS_Z]().I << "\t| " << entry[PID_POS_Z]().D
+        s << " Yaw:       " << +entry[PID_YAW]().P << "\t| "
+          << +entry[PID_YAW]().I << "\t| " << +entry[PID_YAW]().D << std::endl;
+        s << " Altitude:  " << +entry[PID_POS_Z]().P << "\t| "
+          << +entry[PID_POS_Z]().I << "\t| " << +entry[PID_POS_Z]().D
           << std::endl;
 
-        s << " Position:  " << entry[PID_POS_XY]().P << "\t| "
-          << entry[PID_POS_XY]().I << "\t| " << entry[PID_POS_XY]().D
+        s << " Position:  " << +entry[PID_POS_XY]().P << "\t| "
+          << +entry[PID_POS_XY]().I << "\t| " << +entry[PID_POS_XY]().D
           << std::endl;
-        s << " PositionR: " << entry[PID_VEL_XY]().P << "\t| "
-          << entry[PID_VEL_XY]().I << "\t| " << entry[PID_VEL_XY]().D
+        s << " PositionR: " << +entry[PID_VEL_XY]().P << "\t| "
+          << +entry[PID_VEL_XY]().I << "\t| " << +entry[PID_VEL_XY]().D
           << std::endl;
-        s << " NavR:      " << entry[PID_SURFACE]().P << "\t| "
-          << entry[PID_SURFACE]().I << "\t| " << entry[PID_SURFACE]().D
+        s << " NavR:      " << +entry[PID_SURFACE]().P << "\t| "
+          << +entry[PID_SURFACE]().I << "\t| " << +entry[PID_SURFACE]().D
           << std::endl;
-        s << " Level:     " << entry[PID_LEVEL]().P << "\t| "
-          << entry[PID_LEVEL]().I << "\t| " << entry[PID_LEVEL]().D
+        s << " Level:     " << +entry[PID_LEVEL]().P << "\t| "
+          << +entry[PID_LEVEL]().I << "\t| " << +entry[PID_LEVEL]().D
           << std::endl;
-        s << " Magn:      " << entry[PID_HEADING]().P << "\t| "
-          << entry[PID_HEADING]().I << "\t| " << entry[PID_HEADING]().D
+        s << " Magn:      " << +entry[PID_HEADING]().P << "\t| "
+          << +entry[PID_HEADING]().I << "\t| " << +entry[PID_HEADING]().D
           << std::endl;
-        s << " Vel:       " << entry[PID_VEL_Z]().P << "\t| "
-          << entry[PID_VEL_Z]().I << "\t| " << entry[PID_VEL_Z]().D
+        s << " Vel:       " << +entry[PID_VEL_Z]().P << "\t| "
+          << +entry[PID_VEL_Z]().I << "\t| " << +entry[PID_VEL_Z]().D
           << std::endl;
 
         return s;
