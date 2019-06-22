@@ -321,12 +321,11 @@ public:
                                       T1>::type* = nullptr,
               typename std::enable_if<std::is_arithmetic<T2>::value,
                                       T2>::type* = nullptr>
-    bool unpack(T1& val, T2 scale, T2 offset = 0) const {
+    bool unpack(T1& val, T2 scale, T2 offset = 0.f) const {
         bool rc        = true;
         encoding_T tmp = 0;
         rc &= unpack(tmp);
-        val = tmp / scale;
-        val -= offset;
+        val = static_cast<T1>(tmp / scale - offset);
         return rc;
     }
 
