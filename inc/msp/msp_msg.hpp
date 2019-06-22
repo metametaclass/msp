@@ -3201,6 +3201,10 @@ struct RcTuning : public RcTuningSettings, public Message {
         rc &= data.unpack(rcExpo[1]);
         return rc;
     }
+
+	virtual std::ostream& print(std::ostream& s) const override {
+        return RcTuningSettings::print(s);
+	}
 };
 
 // PID struct for messages 112 and 202
@@ -3306,6 +3310,10 @@ struct Pid : public PidSettings, public Message {
         }
         return rc;
     }
+
+	virtual std::ostream& print(std::ostream& s) const override {
+        return PidSettings::print(s);
+	}
 };
 
 // MSP_ACTIVEBOXES: 113
