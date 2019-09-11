@@ -19,14 +19,20 @@ int main(int argc, char *argv[]) {
         (argc > 1) ? std::string(argv[1]) : "/dev/ttyUSB0";
     const size_t baudrate = (argc > 2) ? std::stoul(argv[2]) : 115200;
 
-    fcu::FlightController fcu;
-    fcu.connect(device, baudrate);
+    try {
+        fcu::FlightController fcu;
+        fcu.connect(device, baudrate);
 
-    // spin motors 1 to 4
-    fcu.setMotors({{1100, 1100, 1100, 1100, 0, 0, 0, 0}});
+        // spin motors 1 to 4
+        fcu.setMotors({ {1100, 1100, 1100, 1100, 0, 0, 0, 0} });
 
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(1));
 
-    // stop motors
-    fcu.setMotors({{1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000}});
+        // stop motors
+        fcu.setMotors({ {1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000} });
+    }
+    catch (std::exception e) {
+        std::cout << e.what() << std::endl;
+        return 1;
+    }
 }

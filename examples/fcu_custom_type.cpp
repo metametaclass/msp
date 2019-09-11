@@ -29,13 +29,19 @@ int main(int argc, char *argv[]) {
         (argc > 1) ? std::string(argv[1]) : "/dev/ttyUSB0";
     const size_t baudrate = (argc > 2) ? std::stoul(argv[2]) : 115200;
 
-    Callbacks cbs;
-    fcu::FlightController fcu;
-    fcu.connect(device, baudrate);
+    try {
+        Callbacks cbs;
+        fcu::FlightController fcu;
+        fcu.connect(device, baudrate);
 
-    // subscribe with costum type
-    fcu.subscribe(&Callbacks::onIdent, &cbs, 1);
+        // subscribe with custom type
+        fcu.subscribe(&Callbacks::onIdent, &cbs, 1);
 
-    // Ctrl+C to quit
-    std::cin.get();
+        // Ctrl+C to quit
+        std::cin.get();
+    }
+    catch (std::exception e) {
+        std::cout << e.what() << std::endl;
+        return 1;
+    }
 }
